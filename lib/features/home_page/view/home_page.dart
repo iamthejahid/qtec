@@ -7,11 +7,22 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const AppbarWithBackButton(title: 'Home Page'),
+      appBar: AppBar(
+        title: Text(
+          'Trending Videos',
+          style: ContentTextStyle.qtecAppbar,
+        ),
+      ),
       backgroundColor: AppColors.background,
       body: SizedBox(
         height: 1.sh,
         width: 1.sw,
+        child: Column(
+          children: [
+            gap16,
+            // Expanded(child: )
+          ],
+        ),
       ),
     );
   }

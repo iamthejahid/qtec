@@ -607,4 +607,12 @@ abstract class ContentTextStyle {
     fontFamily: 'Lexend',
   );
   // **************** | - | **************** //
+
+  static TextStyle qtecAppbar = TextStyle(
+    color: Color(0xFF1A202C),
+    fontSize: 20.sp,
+    fontFamily: 'Inter',
+    fontWeight: FontWeight.w700,
+    height: 0,
+  );
 }
