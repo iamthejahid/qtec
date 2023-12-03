@@ -28,15 +28,56 @@ class HomePage extends HookConsumerWidget {
           style: ContentTextStyle.qtecAppbar,
         ),
       ),
-      backgroundColor: AppColors.background,
+      backgroundColor: AppColors.bg,
       body: SizedBox(
         height: 1.sh,
         width: 1.sw,
-        child: Column(
-          children: [
-            gap16,
-            // Expanded(child: )
-          ],
+        child: ListView.builder(
+          itemCount: homePageState.results.length,
+          itemBuilder: (_, index) => Container(
+            decoration: BoxDecoration(
+              color: AppColors.background,
+            ),
+            margin: EdgeInsets.only(left: 16.w, right: 16.w, bottom: 18.w),
+            child: Column(
+              children: [
+                Image.network(
+                  homePageState.results[index].thumbnail!,
+                  height: 192.h,
+                ),
+                Row(
+                  children: [
+                    Row(
+                      children: [
+                        Container(
+                          height: 40.w,
+                          width: 40.w,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            image: DecorationImage(
+                              image: NetworkImage(
+                                homePageState.results[index].channelImage!,
+                              ),
+                            ),
+                          ),
+                        ),
+                        gap12,
+                        SizedBox(
+                          width: 235.w,
+                          height: 40.w,
+                          child: Flexible(
+                            child: Text(
+                              homePageState.results[index].title!,
+                            ),
+                          ),
+                        ),
+                      ],
+                    )
+                  ],
+                )
+              ],
+            ),
+          ),
         ),
       ),
     );
