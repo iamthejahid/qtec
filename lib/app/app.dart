@@ -51,7 +51,7 @@ class App extends ConsumerWidget {
           locale: Locale(localeProvider),
         ),
       ),
-      designSize: const Size(360, 640 - 56),
+      designSize: const Size(376, 766),
     );
   }
 }
