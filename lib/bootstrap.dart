@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:developer';
 
+import 'package:api_client/network_handler/network.dart';
 import 'package:app_ui/app_ui.dart';
 import 'package:app_utils/app_utils.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -64,9 +65,9 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
 
   // API HANDLER :: 01
 
-  // NetworkHandler.instance.setup(
-  //   baseUrl: BuildConfig.instance.config.baseUrl,
-  // );
+  NetworkHandler.instance.setup(
+    baseUrl: BuildConfig.instance.config.baseUrl,
+  );
 
   // const username = 'mobile';
   // const password = 'secret';

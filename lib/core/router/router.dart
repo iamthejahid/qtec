@@ -6,7 +6,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:qtec_task/core/flavor/flavor.dart';
 import 'package:qtec_task/core/router/error_page.dart';
 import 'package:qtec_task/core/router/router_provider.dart';
-import 'package:qtec_task/features/home_page/view/home_page.dart';
+import 'package:qtec_task/features/home_page/view/home_page_ui.dart';
 import 'package:qtec_task/local_storage/local_cache/cache.dart';
 import 'package:qtec_task/local_storage/local_cache/src/cache_provider.dart';
 

@@ -1,8 +1,7 @@
 // ignore_for_file: strict_raw_type
 
 import 'dart:developer';
-
-import 'package:api_client/api_client.dart';
+import 'package:dio/dio.dart';
 
 class CustomInterceptors extends Interceptor {
   @override
