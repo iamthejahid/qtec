@@ -13,6 +13,7 @@ dependencies:
     path: packages/app_ui   
   app_utils:
     path: packages/app_utils
+  equatable: ^2.0.5
   flutter:
     sdk: flutter
   flutter_dotenv: ^5.1.0
@@ -36,3 +37,5 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   generate: true
+  assets:
+    - .env
