@@ -38,21 +38,24 @@ class NetworkHandler {
 
   // void setRef(WidgetRef ref) => _ref = ref;
 
-  Map<String, String> header(
-      {required bool withToken, bool isMultipart = false}) {
+  Map<String, String> header({
+    required bool withToken,
+    bool isMultipart = false,
+  }) {
     if (withToken) {
       return {
-        'Content-Type':
-            isMultipart ? 'multipart/form-data' : 'application/json',
-        if (!isMultipart) 'Content': 'application/json',
+        'Content-Type': isMultipart
+            ? 'multipart/form-data'
+            : 'application/json; charset=UTF-8',
+        if (!isMultipart) 'Content': 'application/json; charset=UTF-8',
         'Accept': 'application/json',
         if (_token != null && _token!.isNotEmpty)
           'Authorization': 'Bearer $_token',
       };
     } else {
       return {
-        'Content-Type': 'application/json',
-        'Content': 'application/json',
+        'Content-Type': 'application/json; charset=UTF-8',
+        'Content': 'application/json; charset=UTF-8',
         'Accept': 'application/json',
       };
     }
@@ -521,7 +524,8 @@ class NetworkHandler {
     Logger.json(response.body);
 
     if (isSuccessful(response.statusCode)) {
-      final _regResponse = jsonDecode(response.body) as Map<String, dynamic>;
+      final _regResponse =
+          jsonDecode(utf8.decode(response.bodyBytes)) as Map<String, dynamic>;
 
       try {
         final _typedResponse = fromData(_regResponse);
