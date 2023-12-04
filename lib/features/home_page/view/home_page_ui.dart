@@ -1,7 +1,9 @@
 import 'package:app_ui/app_ui.dart';
+import 'package:go_router/go_router.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:qtec_task/features/home_page/home_page.dart';
+import 'package:qtec_task/features/video_watch_page/presentation/video_watch_page.dart';
 
 class HomePage extends HookConsumerWidget {
   const HomePage({super.key});
@@ -34,48 +36,54 @@ class HomePage extends HookConsumerWidget {
         width: 1.sw,
         child: ListView.builder(
           itemCount: homePageState.results.length,
-          itemBuilder: (_, index) => Container(
-            decoration: BoxDecoration(
-              color: AppColors.background,
+          itemBuilder: (_, index) => InkWell(
+            onTap: () => context.goNamed(
+              VideoWatchPage.name,
+              extra: homePageState.results[index],
             ),
-            margin: EdgeInsets.only(left: 16.w, right: 16.w, bottom: 18.w),
-            child: Column(
-              children: [
-                Image.network(
-                  homePageState.results[index].thumbnail!,
-                  height: 192.h,
-                ),
-                Row(
-                  children: [
-                    Row(
-                      children: [
-                        Container(
-                          height: 40.w,
-                          width: 40.w,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            image: DecorationImage(
-                              image: NetworkImage(
-                                homePageState.results[index].channelImage!,
+            child: Container(
+              decoration: BoxDecoration(
+                color: AppColors.background,
+              ),
+              margin: EdgeInsets.only(left: 16.w, right: 16.w, bottom: 18.w),
+              child: Column(
+                children: [
+                  Image.network(
+                    homePageState.results[index].thumbnail!,
+                    height: 192.h,
+                  ),
+                  Row(
+                    children: [
+                      Row(
+                        children: [
+                          Container(
+                            height: 40.w,
+                            width: 40.w,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              image: DecorationImage(
+                                image: NetworkImage(
+                                  homePageState.results[index].channelImage!,
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                        gap12,
-                        SizedBox(
-                          width: 235.w,
-                          height: 40.w,
-                          child: Flexible(
-                            child: Text(
-                              homePageState.results[index].title!,
+                          gap12,
+                          SizedBox(
+                            width: 235.w,
+                            height: 40.w,
+                            child: Flexible(
+                              child: Text(
+                                homePageState.results[index].title!,
+                              ),
                             ),
                           ),
-                        ),
-                      ],
-                    )
-                  ],
-                )
-              ],
+                        ],
+                      )
+                    ],
+                  )
+                ],
+              ),
             ),
           ),
         ),

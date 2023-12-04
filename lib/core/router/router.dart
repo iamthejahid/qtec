@@ -6,7 +6,9 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:qtec_task/core/flavor/flavor.dart';
 import 'package:qtec_task/core/router/error_page.dart';
 import 'package:qtec_task/core/router/router_provider.dart';
+import 'package:qtec_task/features/home_page/domain/home_page_api_response.dart';
 import 'package:qtec_task/features/home_page/view/home_page_ui.dart';
+import 'package:qtec_task/features/video_watch_page/presentation/video_watch_page.dart';
 import 'package:qtec_task/local_storage/local_cache/cache.dart';
 import 'package:qtec_task/local_storage/local_cache/src/cache_provider.dart';
 
@@ -22,11 +24,20 @@ final routerProvider = Provider<GoRouter>((ref) {
     refreshListenable: router,
     routes: [
       GoRoute(
-        path: HomePage.path,
-        name: HomePage.name,
-        builder: (BuildContext context, GoRouterState state) =>
-            const HomePage(),
-      ),
+          path: HomePage.path,
+          name: HomePage.name,
+          builder: (BuildContext context, GoRouterState state) =>
+              const HomePage(),
+          routes: [
+            GoRoute(
+              path: VideoWatchPage.path,
+              name: VideoWatchPage.name,
+              builder: (BuildContext context, GoRouterState state) =>
+                  VideoWatchPage(
+                videoelement: state.extra as Result,
+              ),
+            ),
+          ]),
     ],
     initialLocation: HomePage.path,
     errorPageBuilder: router._errorPageBuilder,
